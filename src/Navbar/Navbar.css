@@ -1,0 +1,32 @@
+.main-navbar {
+	background-color: chartreuse;
+	grid-area: nav;
+	padding: 25px;
+}
+
+.main-navbar ul li {
+	list-style: none;
+}
+
+.main-navbar__link {
+	text-decoration: none;
+	transition: all .25s ease;
+}
+
+.main-navbar a.active {
+	color: rgb(0, 2, 139);
+	font-weight: 700;
+}
+
+.main-sidebar {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 4%;
+	align-items: center;
+	margin:10px 4px;
+}
+
+.sidebar-title {
+	margin: 15px 10px;
+	font-size: 25px;
+}

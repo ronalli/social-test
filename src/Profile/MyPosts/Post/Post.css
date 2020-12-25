@@ -1,0 +1,21 @@
+.post-item {
+	width: 60%;
+	display: grid;
+	grid-template-columns: 1fr 11fr;
+	align-items: center;
+	margin: 10px;
+	border: 2px solid green;
+	padding: 4px;
+	border-radius: 5px;
+	background-color: #fff;
+	cursor: pointer;
+	transition: all .25s ease;
+}
+
+.post-item:hover {
+	background-color: #E7EAED;
+}
+
+.post-item:nth-child(2n) {
+	margin-left: 25px;
+}

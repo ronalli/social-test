@@ -1,0 +1,12 @@
+.profile {
+	background-color: darkred;
+	grid-area: profile;
+	padding: 10px;
+}
+
+
+
+textarea {
+	margin-top: 25px;
+	display: block;
+}

@@ -1,0 +1,22 @@
+.dialogs {
+	display: grid;
+	grid-template-columns: 2fr 10fr;
+}
+
+.dialog-item a{
+	transition: all .25s ease;
+}
+
+.dialog-item a:hover {
+	background-color: darkslategrey;
+	cursor: pointer;
+}
+
+.dialog-item a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.dialogs-post {
+	margin-bottom: 25px;
+}
