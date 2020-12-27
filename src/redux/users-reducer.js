@@ -4,9 +4,9 @@ const SET_USERS = 'SET_USERS';
 
 let initialState = {
 	users: [
-		{ id: 1, photoUser: 'https://img.icons8.com/bubbles/2x/user-male.png', followed: true, fullName: 'Nikita K.', status: 'My grandfather is very happy', location: { cityName: 'Sevastopol', country: 'Russian' } },
-		{ id: 2, photoUser: 'https://img.icons8.com/bubbles/2x/user-male.png', followed: false, fullName: 'Egor K.', status: 'I go to school every day', location: { cityName: 'Primorsky', country: 'Ukraine' } },
-		{ id: 3, photoUser: 'https://img.icons8.com/bubbles/2x/user-male.png', followed: true, fullName: 'Alex V.', status: 'I have several cars, and they are red', location: { cityName: 'Berlin', country: 'Germany' } }
+		// { id: 1, photoUser: 'https://img.icons8.com/bubbles/2x/user-male.png', followed: true, fullName: 'Nikita K.', status: 'My grandfather is very happy', location: { cityName: 'Sevastopol', country: 'Russian' } },
+		// { id: 2, photoUser: 'https://img.icons8.com/bubbles/2x/user-male.png', followed: false, fullName: 'Egor K.', status: 'I go to school every day', location: { cityName: 'Primorsky', country: 'Ukraine' } },
+		// { id: 3, photoUser: 'https://img.icons8.com/bubbles/2x/user-male.png', followed: true, fullName: 'Alex V.', status: 'I have several cars, and they are red', location: { cityName: 'Berlin', country: 'Germany' } }
 	],
 };
 
