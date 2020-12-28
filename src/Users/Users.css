@@ -1,0 +1,11 @@
+.container-users {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+
+.item-user {
+	margin: 10px;
+	text-align: center;
+}
