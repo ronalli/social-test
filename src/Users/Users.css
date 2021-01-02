@@ -9,3 +9,7 @@
 	margin: 10px;
 	text-align: center;
 }
+
+.item-user img {
+	width: 50%;
+}
