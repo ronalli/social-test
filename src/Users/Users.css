@@ -13,3 +13,16 @@
 .item-user img {
 	width: 50%;
 }
+
+.user-page-count:hover {
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.users-pagination span:hover{
+	cursor: pointer;
+}
+
+.page-changed {
+	font-weight: 800;
+}
