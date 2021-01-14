@@ -28,7 +28,7 @@ const App = (props) => {
 				// dialogsPage={props.state.dialogsPage}
 				// dispatch={props.dispatch}
 				/>} />
-				<Route path='/profile' render={() => <ProfileContainer
+				<Route path='/profile/:userId?' render={() => <ProfileContainer
 				// store={props.store}
 				// profilePage={props.state.profilePage}
 				// dispatch={props.dispatch}

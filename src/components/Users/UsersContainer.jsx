@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { follow, setTotalUsersCount, setUsers, unFollow, setCurrentPage, toggleIsFetching } from '../../redux/users-reducer';
-import { setIdUserProfile } from '../../redux/profile-reducer';
 import Users from './Users';
 import * as axios from 'axios';
 import Prealoder from '../common/Preloader/Prealoder';
@@ -41,7 +40,6 @@ class UsersContainer extends React.Component {
 					follow={this.props.follow}
 					onPageChanged={this.onPageChanged}
 					users={this.props.users}
-					setIdUserProfile={this.props.setIdUserProfile}
 				/>
 			</>
 		)
@@ -82,4 +80,4 @@ let mapStateToProps = (state) => {
 // 	}
 // }
 
-export default connect(mapStateToProps, { follow, unFollow, setUsers, setTotalUsersCount, setCurrentPage, toggleIsFetching, setIdUserProfile })(UsersContainer);
+export default connect(mapStateToProps, { follow, unFollow, setUsers, setTotalUsersCount, setCurrentPage, toggleIsFetching })(UsersContainer);
