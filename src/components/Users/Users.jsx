@@ -32,7 +32,7 @@ let Users = (props) => {
 					props.users.map(u => <div className='item-user' key={u.id}>
 
 						<div>
-							<NavLink to={`/profile/${u.id}`}>
+							<NavLink to={`/profile/${u.id}`} onClick={(e) => { props.setIdUserProfile(u.id) }}>
 								<img src={u.photos.large || userPhoto} alt="alt" />
 							</NavLink>
 						</div>
@@ -51,7 +51,7 @@ let Users = (props) => {
 					)
 				}
 			</div>
-		</div>
+		</div >
 	)
 
 }
