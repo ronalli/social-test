@@ -1,5 +1,6 @@
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 
 let initialState = {
@@ -11,6 +12,7 @@ let initialState = {
 		{ id: 4, message: 'I have a cold tea and several friuts', date: '29.12.2019', image: '/planet-earth.png' }
 	],
 	newPostText: '',
+	profile: null,
 };
 
 
@@ -44,6 +46,15 @@ export const profileReducer = (state = initialState, action) => {
 			// copyState.newPostText = action.newText;
 			// return copyState;
 		}
+		case SET_USER_PROFILE: {
+			return {
+				...state,
+				profile: action.profile
+			}
+			// let copyState = { ...state };
+			// copyState.newPostText = action.newText;
+			// return copyState;
+		}
 		default:
 			return state;
 	}
@@ -61,3 +72,5 @@ export const updateNewPostTextActionCreator = (text) => {
 		newText: text
 	}
 };
+
+export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
