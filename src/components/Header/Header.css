@@ -1,9 +1,17 @@
 header {
 	background-color: darkgoldenrod;
 	grid-area: header;
+	padding: 0 25px;
 }
 
 header img {
 	width: 60px;
 	margin: 5px;
+}
+
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
