@@ -1,3 +1,5 @@
+import { UsersAPI } from "../api/api";
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
@@ -8,11 +10,7 @@ const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const TOGGLE_IN_FETCHING_PROGRESS = 'TOGGLE_IN_FETCHING_PROGRESS';
 
 let initialState = {
-	users: [
-		// { id: 1, photoUser: 'https://img.icons8.com/bubbles/2x/user-male.png', followed: true, fullName: 'Nikita K.', status: 'My grandfather is very happy', location: { cityName: 'Sevastopol', country: 'Russian' } },
-		// { id: 2, photoUser: 'https://img.icons8.com/bubbles/2x/user-male.png', followed: false, fullName: 'Egor K.', status: 'I go to school every day', location: { cityName: 'Primorsky', country: 'Ukraine' } },
-		// { id: 3, photoUser: 'https://img.icons8.com/bubbles/2x/user-male.png', followed: true, fullName: 'Alex V.', status: 'I have several cars, and they are red', location: { cityName: 'Berlin', country: 'Germany' } }
-	],
+	users: [],
 	totalUsersCount: 0,
 	countPage: 5,
 	currentPage: 1,
@@ -88,11 +86,48 @@ export const usersReducer = (state = initialState, action) => {
 	}
 };
 
-export const follow = (userId) => ({ type: FOLLOW, userId });
-export const unFollow = (userId) => ({ type: UNFOLLOW, userId });
+export const followSuccess = (userId) => ({ type: FOLLOW, userId });
+export const unFollowSuccess = (userId) => ({ type: UNFOLLOW, userId });
 export const setUsers = (users) => ({ type: SET_USERS, users })
 
 export const setCurrentPage = (currentPage) => ({ type: CURRENT_PAGE, currentPage });
 export const setTotalUsersCount = (totalUsers) => ({ type: TOTAL_USERS_COUNT, totalUsers })
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching })
 export const toggleInFetchingProgress = (inProgress, userId) => ({ type: TOGGLE_IN_FETCHING_PROGRESS, inProgress, userId })
+
+
+export const getUsers = (countPage, currentPage) => {
+	return (dispatch) => {
+		dispatch(toggleIsFetching(true));
+		UsersAPI.getUsers(countPage, currentPage)
+			.then(data => {
+				dispatch(setUsers(data.items));
+				dispatch(setTotalUsersCount(data.totalCount));
+				dispatch(toggleIsFetching(false));
+			});
+	}
+}
+
+export const unFollow = (userId) => {
+	return (dispatch) => {
+		dispatch(toggleInFetchingProgress(true, userId));
+		UsersAPI.unFollowUser(userId).then(data => {
+			if (data.resultCode === 0) {
+				dispatch(unFollowSuccess(userId));
+			}
+			dispatch(toggleInFetchingProgress(false, userId));
+		});
+	}
+}
+
+export const follow = (userId) => {
+	return (dispatch) => {
+		dispatch(toggleInFetchingProgress(true, userId));
+		UsersAPI.followUser(userId).then(data => {
+			if (data.resultCode === 0) {
+				dispatch(followSuccess(userId));
+			}
+			dispatch(toggleInFetchingProgress(false, userId));
+		});
+	}
+}

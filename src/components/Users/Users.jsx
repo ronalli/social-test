@@ -2,13 +2,11 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import userPhoto from '../../Assets/images/user.png'
 import './Users.css';
-import { UsersAPI } from '../../api/api';
 
 
 let Users = (props) => {
 
 	let pagesCount = Math.ceil(props.totalUsersCount / props.countPage)
-	// console.log(pagesCount);
 
 	let pages = [];
 	for (let i = 1; i <= pagesCount; i++) {
@@ -45,26 +43,27 @@ let Users = (props) => {
 							{
 								u.followed
 									? <button className='unfollow-button' disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-										// debugger;
-										props.toggleInFetchingProgress(true, u.id);
-										UsersAPI.unFollowUser(u.id).then(data => {
-											if (data.resultCode === 0) {
-												props.unFollow(u.id)
-											}
-											props.toggleInFetchingProgress(false, u.id)
-											// debugger;
-										});
+										props.unFollow(u.id);
+
+										// props.toggleInFetchingProgress(true, u.id);
+										// UsersAPI.unFollowUser(u.id).then(data => {
+										// 	if (data.resultCode === 0) {
+										// 		props.unFollow(u.id)
+										// 	}
+										// 	props.toggleInFetchingProgress(false, u.id)
+										// });
 
 
 									}}>unFollow</button>
 									: <button className='follow-button' disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
-										props.toggleInFetchingProgress(true, u.id);
-										UsersAPI.followUser(u.id).then(data => {
-											if (data.resultCode === 0) {
-												props.follow(u.id)
-											}
-											props.toggleInFetchingProgress(false, u.id);
-										});
+										props.follow(u.id);
+										// props.toggleInFetchingProgress(true, u.id);
+										// UsersAPI.followUser(u.id).then(data => {
+										// 	if (data.resultCode === 0) {
+										// 		props.follow(u.id)
+										// 	}
+										// 	props.toggleInFetchingProgress(false, u.id);
+										// });
 
 
 									}}>Follow</button>
