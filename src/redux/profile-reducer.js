@@ -34,29 +34,18 @@ export const profileReducer = (state = initialState, action) => {
 				postsItem: [...state.postsItem, newPost],
 				newPostText: ''
 			}
-			// let copyState = { ...state };
-			// copyState.postsItem = [...state.postsItem];
-			// copyState.postsItem.push(newPost);
-			// copyState.newPostText = '';
-			// return copyState;
 		}
 		case UPDATE_NEW_POST_TEXT: {
 			return {
 				...state,
 				newPostText: action.newText
 			}
-			// let copyState = { ...state };
-			// copyState.newPostText = action.newText;
-			// return copyState;
 		}
 		case SET_USER_PROFILE: {
 			return {
 				...state,
 				profile: action.profile
 			}
-			// let copyState = { ...state };
-			// copyState.newPostText = action.newText;
-			// return copyState;
 		}
 		default:
 			return state;
@@ -79,10 +68,8 @@ export const updateNewPostTextActionCreator = (text) => {
 export const setUserProfileSuccess = (profile) => ({ type: SET_USER_PROFILE, profile });
 
 
-export const setUserProfile = (userId) => {
-	return (dispatch) => {
-		UsersAPI.setUserProfile(userId).then(data => {
-			dispatch(setUserProfileSuccess(data))
-		});
-	}
+export const getUserProfile = (userId) => (dispatch) => {
+	UsersAPI.setUserProfile(userId).then(data => {
+		dispatch(setUserProfileSuccess(data))
+	});
 }
