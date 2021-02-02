@@ -45,26 +45,9 @@ let Users = (props) => {
 									? <button className='unfollow-button' disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
 										props.unFollow(u.id);
 
-										// props.toggleInFetchingProgress(true, u.id);
-										// UsersAPI.unFollowUser(u.id).then(data => {
-										// 	if (data.resultCode === 0) {
-										// 		props.unFollow(u.id)
-										// 	}
-										// 	props.toggleInFetchingProgress(false, u.id)
-										// });
-
-
 									}}>unFollow</button>
 									: <button className='follow-button' disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
 										props.follow(u.id);
-										// props.toggleInFetchingProgress(true, u.id);
-										// UsersAPI.followUser(u.id).then(data => {
-										// 	if (data.resultCode === 0) {
-										// 		props.follow(u.id)
-										// 	}
-										// 	props.toggleInFetchingProgress(false, u.id);
-										// });
-
 
 									}}>Follow</button>
 							}

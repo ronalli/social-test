@@ -7,10 +7,8 @@ import Header from './Header';
 class HeaderContainer extends React.Component {
 
 	componentDidMount() {
-
 		this.props.getAuthUserData()
 	}
-
 
 	render() {
 		return (<>

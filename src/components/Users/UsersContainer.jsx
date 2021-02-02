@@ -3,33 +3,17 @@ import { connect } from 'react-redux';
 import { follow, unFollow, getUsers, setCurrentPage } from '../../redux/users-reducer';
 import Users from './Users';
 import Prealoder from '../common/Preloader/Prealoder';
-// import { UsersAPI } from '../../api/api';
 class UsersContainer extends React.Component {
 
 	componentDidMount() {
 
 		this.props.getUsers(this.props.countPage, this.props.currentPage)
 
-		// this.props.toggleIsFetching(true);
-		// UsersAPI.getUsers(this.props.countPage, this.props.currentPage)
-		// 	.then(data => {
-		// 		this.props.setUsers(data.items);
-		// 		this.props.setTotalUsersCount(data.totalCount);
-		// 		this.props.toggleIsFetching(false);
-		// 	});
 	};
 
 	onPageChanged = (numberPage) => {
-
 		this.props.setCurrentPage(numberPage);
 		this.props.getUsers(this.props.countPage, numberPage)
-		// this.props.toggleIsFetching(true);
-
-		// UsersAPI.getUsers(this.props.countPage, numberPage)
-		// 	.then(data => {
-		// 		this.props.setUsers(data.items);
-		// 		this.props.toggleIsFetching(false);
-		// 	});
 	}
 
 	render() {
@@ -45,7 +29,6 @@ class UsersContainer extends React.Component {
 					follow={this.props.follow}
 					onPageChanged={this.onPageChanged}
 					users={this.props.users}
-					// toggleInFetchingProgress={this.props.toggleInFetchingProgress}
 					followingInProgress={this.props.followingInProgress}
 				/>
 			</>
