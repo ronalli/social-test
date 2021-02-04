@@ -45,13 +45,13 @@ export const dialogsReducer = (state = initialState, action) => {
 	}
 };
 
-export const addMessageActionCreator = () => {
+export const addMessage = () => {
 	return {
 		type: ADD_MESSAGE_NAME
 	}
 };
 
-export const onMessageChangeActionCreator = (text) => {
+export const onMessageChange = (text) => {
 	return {
 		type: UPDATE_NEW_MESSAGE_TEXT,
 		newTextMessage: text
