@@ -30,6 +30,7 @@ export const UsersAPI = {
 	},
 
 
+
 };
 
 
@@ -38,4 +39,9 @@ export const AuthAPI = {
 		return instance.get(`auth/me`)
 			.then(response => response.data)
 	},
+
+	setStatusMe() {
+		return instance.put(`profile/status/`)
+			.then(response => response.data)
+	}
 };

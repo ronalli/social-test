@@ -1,6 +1,7 @@
 import Prealoder from '../../common/Preloader/Prealoder';
 import './ProfileInfo.css';
 import userPhoto from '../../../Assets/images/user.png';
+import ProfileStatus from './ProfileStatus';
 
 const ProfileInfo = (props) => {
 
@@ -10,7 +11,7 @@ const ProfileInfo = (props) => {
 		return (
 			<>
 				<div className='profile-info'>
-
+					<ProfileStatus status={"Hello!"} />
 				</div>
 				<div className='profile-user'>
 					<img src={props.profile.photos.small || userPhoto} alt="alt" />
