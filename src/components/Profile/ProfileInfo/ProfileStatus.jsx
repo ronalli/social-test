@@ -1,5 +1,4 @@
 import React from 'react';
-import { AuthAPI, ProfileAPI } from '../../../api/api';
 import './ProfileInfo';
 
 class ProfileStatus extends React.Component {
@@ -11,14 +10,15 @@ class ProfileStatus extends React.Component {
 	hangleFocus = (event) => { event.target.select() }
 
 	activateEditMode = () => {
-
 		this.setState({ editMode: true })
 	}
 
-
-	deactivateEditMode = (e) => {
+	deactivateEditMode = () => {
 		this.setState({ editMode: false })
-		// console.log(e);
+	}
+
+	onStatusChange = (e) => {
+		this.props.updateStatus(e.target.value);
 	}
 
 	render() {
@@ -26,16 +26,14 @@ class ProfileStatus extends React.Component {
 		return (
 			<div className='profile-status'>
 
-
-
 				{this.state.editMode
 					?
 					<div>
-						<input autoFocus onBlur={this.deactivateEditMode} type="text" defaultValue={this.props.status} onFocus={this.hangleFocus} />
+						<input autoFocus onBlur={this.deactivateEditMode} type="text" defaultValue={this.state.status} onFocus={this.hangleFocus} onChange={this.onStatusChange} />
 					</div>
 					:
 					<div>
-						<span onDoubleClick={this.activateEditMode}>{this.props.status}</span>
+						<span onDoubleClick={this.activateEditMode}>{this.props.status || '-----'}</span>
 					</div>
 				}
 			</div>
