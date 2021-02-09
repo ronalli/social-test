@@ -25,13 +25,27 @@ export const UsersAPI = {
 	},
 
 	setUserProfile(userId) {
+		console.log('Данный метод устарел! С новой версией - используйте обновления');
+		return ProfileAPI.getProfile(userId);
+	},
+
+};
+
+export const ProfileAPI = {
+	getProfile(userId) {
 		return instance.get(`profile/${userId}`)
 			.then(response => response.data)
 	},
+	updateStatus(status) {
+		return instance.put(`profile/status`, { status: status });
+	},
 
+	getStatus(userId) {
+		return instance.get(`profile/status/${userId}`)
+			.then(response => response.data)
+	}
 
-
-};
+}
 
 
 export const AuthAPI = {
@@ -40,8 +54,8 @@ export const AuthAPI = {
 			.then(response => response.data)
 	},
 
-	setStatusMe() {
-		return instance.put(`profile/status/`)
-			.then(response => response.data)
-	}
+	// setStatusMe() {
+	// 	return instance.get(`profile/status/`)
+	// 		.then(response => response.data)
+	// }
 };

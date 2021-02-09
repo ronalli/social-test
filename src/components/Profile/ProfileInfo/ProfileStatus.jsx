@@ -1,4 +1,5 @@
 import React from 'react';
+import { AuthAPI, ProfileAPI } from '../../../api/api';
 import './ProfileInfo';
 
 class ProfileStatus extends React.Component {
@@ -14,6 +15,7 @@ class ProfileStatus extends React.Component {
 		this.setState({ editMode: true })
 	}
 
+
 	deactivateEditMode = (e) => {
 		this.setState({ editMode: false })
 		// console.log(e);
@@ -23,6 +25,8 @@ class ProfileStatus extends React.Component {
 
 		return (
 			<div className='profile-status'>
+
+
 
 				{this.state.editMode
 					?
