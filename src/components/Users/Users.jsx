@@ -10,7 +10,7 @@ let Users = (props) => {
 
 	let pages = [];
 	for (let i = 1; i <= pagesCount; i++) {
-		if (i <= 40) {
+		if (i <= 60) {
 			pages.push(i);
 		}
 	}

@@ -10,7 +10,6 @@ class ProfileStatus extends React.Component {
 	hangleFocus = (event) => { event.target.select() }
 
 	activateEditMode = () => {
-
 		this.setState({ editMode: true })
 	}
 
