@@ -11,7 +11,7 @@ const ProfileInfo = (props) => {
 		return (
 			<>
 				<div className='profile-info'>
-					<ProfileStatus status={"Hello!"} />
+					<ProfileStatus status={props.status} updateStatus={props.updateStatus} />
 				</div>
 				<div className='profile-user'>
 					<img src={props.profile.photos.small || userPhoto} alt="alt" />
