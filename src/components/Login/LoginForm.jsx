@@ -1,6 +1,7 @@
 import { Form, Field } from 'react-final-form';
 
 const LoginForm = (props) => {
+
 	return (
 		<Form
 			onSubmit={props.onSubmit}
@@ -8,10 +9,10 @@ const LoginForm = (props) => {
 				<form onSubmit={handleSubmit}>
 					<div>
 						<Field
-							name='login'
+							name='email'
 							component='input'
 							type='text'
-							placeholder='Login'
+							placeholder='Email'
 						/>
 					</div>
 					<div>
@@ -24,7 +25,7 @@ const LoginForm = (props) => {
 					</div>
 					<div>
 						<Field
-							name='remember'
+							name='rememberMe'
 							component='input'
 							type='checkbox'
 						/>
