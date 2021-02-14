@@ -29,6 +29,31 @@ export const UsersAPI = {
 		return ProfileAPI.getProfile(userId);
 	},
 
+	getUserFollow(userId) {
+		return instance.get(`follow/${userId}`)
+			.then(response => response.data)
+	},
+
+	setDialogs(userId) {
+		return instance.put(`dialogs/${userId}`, { messages: 'Hello' })
+			.then(response => response.data)
+	},
+
+	getDialogs() {
+		return instance.get(`dialogs`)
+			.then(response => response.data)
+	},
+
+	getMessageUser(userId) {
+		return instance.get(`dialogs/${userId}/messages`)
+			.then(response => response.data)
+	},
+
+	setMessagesUser(userId) {
+		return instance.post(`dialogs/${userId}/messages`, { body: 'Hello' })
+			.then(response => response.data)
+	}
+
 };
 
 export const ProfileAPI = {
@@ -61,3 +86,5 @@ export const AuthAPI = {
 			.then(response => response)
 	}
 };
+
+

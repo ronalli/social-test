@@ -56,7 +56,12 @@ export const postAuth = (data) => (dispatch) => {
 		.then(dataResponse => {
 			if (dataResponse.data.resultCode === 0) {
 				dispatch(setAuth(data.email, data.password, data.rememberMe))
-				AuthAPI.authMe();
+				AuthAPI.authMe().then(data => {
+					let { id, email, login } = data.data;
+					if (data.resultCode === 0) {
+						dispatch(setAuthUserData(id, email, login));
+					}
+				});
 			}
 		})
 }

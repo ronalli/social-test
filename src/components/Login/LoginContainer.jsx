@@ -15,13 +15,9 @@ class LoginContainer extends React.Component {
 	}
 
 	onSubmit = (values) => {
-		console.log(this.props.dataAuth);
 		this.setState({
 			auth: values,
 		})
-
-		console.log(values);
-		console.log(this.props.dataAuth);
 	}
 
 
@@ -29,9 +25,6 @@ class LoginContainer extends React.Component {
 		if (this.state.auth !== prevState.auth) {
 			this.props.postAuth(this.state.auth);
 		}
-		// console.log(prevProps);
-		// console.log(prevState.auth);
-		// console.log(this.state.auth);
 	}
 
 

@@ -22,6 +22,7 @@ let mapStateToProps = (state) => {
 	return {
 		isAuth: state.auth.isAuth,
 		login: state.auth.login
+
 	};
 };
 

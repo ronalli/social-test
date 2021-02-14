@@ -2,9 +2,18 @@ import React from 'react';
 import './Dialogs.css';
 import DialogItem from './DialogItem/DialogsItem';
 import MessageItem from './MessageItem/MessageItem';
+import { UsersAPI } from '../../api/api';
 
 const Dialogs = (props) => {
 
+
+
+	console.log(UsersAPI.getUserFollow(14935));
+	console.log(UsersAPI.setDialogs(14935));
+	console.log(UsersAPI.getDialogs());
+	console.log(UsersAPI.getMessageUser(14935));
+	console.log(UsersAPI.setMessagesUser(14935));
+	console.log(UsersAPI.getMessageUser(14935));
 
 	let dialogsElements = props.dialogsNames.map((data) => {
 		return <DialogItem key={`${data.id}${data.name}`} name={data.name} id={data.id} image={data.image} />
@@ -37,7 +46,9 @@ const Dialogs = (props) => {
 				</div>
 			</div>
 		</div>
+
 	);
 }
 
 export default Dialogs;
+

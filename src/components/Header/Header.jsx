@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import './Header.css';
 
 const Header = (props) => {
+
 	return (
 		<header className='header'>
 			<div className='section-logo'>
@@ -10,7 +11,9 @@ const Header = (props) => {
 
 			<div className='section-login'>
 				{
-					props.isAuth ? props.login : <NavLink to={'/login'}>Login</NavLink>
+					props.isAuth
+						? props.login
+						: <NavLink to={'/login'}>Login</NavLink>
 
 				}
 			</div>
