@@ -15,6 +15,8 @@ let Users = (props) => {
 		}
 	}
 
+	// console.log(props.usersFollow);
+
 	return (
 		<div>
 			<div className='users-pagination'>

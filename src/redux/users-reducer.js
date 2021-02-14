@@ -16,6 +16,7 @@ let initialState = {
 	currentPage: 1,
 	isFetching: false,
 	followingInProgress: [],
+	usersFollow: []
 };
 
 export const usersReducer = (state = initialState, action) => {
@@ -28,7 +29,8 @@ export const usersReducer = (state = initialState, action) => {
 						return { ...u, followed: true }
 					}
 					return u;
-				})
+				}),
+				usersFollow: [...state.usersFollow, action.userId],
 			}
 		}
 		case UNFOLLOW: {
@@ -39,7 +41,8 @@ export const usersReducer = (state = initialState, action) => {
 						return { ...u, followed: false }
 					}
 					return u;
-				})
+				}),
+				usersFollow: state.usersFollow.filter(id => id !== action.userId)
 			}
 		}
 
