@@ -15,7 +15,7 @@ let Users = (props) => {
 		}
 	}
 
-	// console.log(props.usersFollow);
+	console.log(props.usersFollow);
 
 	return (
 		<div>
