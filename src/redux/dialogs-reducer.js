@@ -1,5 +1,5 @@
 const ADD_MESSAGE_NAME = 'ADD-MESSAGE-NAME';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+// const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
 
 let initialState = {
@@ -18,7 +18,7 @@ let initialState = {
 		{ id: 3, message: 'Two divided by zero equals zero' },
 		{ id: 4, message: 'Some rooms are big, and some are not.' }
 	],
-	newMessageText: '',
+	// newMessageText: '',
 };
 
 export const dialogsReducer = (state = initialState, action) => {
@@ -26,34 +26,29 @@ export const dialogsReducer = (state = initialState, action) => {
 		case ADD_MESSAGE_NAME: {
 			let idElement = state.messagesNames.length;
 			let newMessage = {
-				id: idElement, message: state.newMessageText,
+				id: idElement, message: action.newMessage,
 			}
 			return {
 				...state,
 				messagesNames: [...state.messagesNames, newMessage],
-				newMessageText: ''
 			}
 		}
-		case UPDATE_NEW_MESSAGE_TEXT: {
-			return {
-				...state,
-				newMessageText: action.newTextMessage
-			}
-		}
+		// case UPDATE_NEW_MESSAGE_TEXT: {
+		// 	return {
+		// 		...state,
+		// 		newMessageText: action.newTextMessage
+		// 	}
+		// }
 		default:
 			return state;
 	}
 };
 
-export const addMessage = () => {
-	return {
-		type: ADD_MESSAGE_NAME
-	}
-};
+export const addMessage = (newMessage) => ({ type: ADD_MESSAGE_NAME, newMessage });
 
-export const onMessageChange = (text) => {
-	return {
-		type: UPDATE_NEW_MESSAGE_TEXT,
-		newTextMessage: text
-	}
-};
+// export const onMessageChange = (text) => {
+// 	return {
+// 		type: UPDATE_NEW_MESSAGE_TEXT,
+// 		newTextMessage: text
+// 	}
+// };

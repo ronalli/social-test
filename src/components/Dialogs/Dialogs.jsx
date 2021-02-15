@@ -2,18 +2,10 @@ import React from 'react';
 import './Dialogs.css';
 import DialogItem from './DialogItem/DialogsItem';
 import MessageItem from './MessageItem/MessageItem';
-import { UsersAPI } from '../../api/api';
+import DialogsForm from './DialogsForm/DialogsForm';
 
 const Dialogs = (props) => {
 
-
-
-	console.log(UsersAPI.getUserFollow(14935));
-	console.log(UsersAPI.setDialogs(14935));
-	console.log(UsersAPI.getDialogs());
-	console.log(UsersAPI.getMessageUser(14935));
-	console.log(UsersAPI.setMessagesUser(14935));
-	console.log(UsersAPI.getMessageUser(14935));
 
 	let dialogsElements = props.dialogsNames.map((data) => {
 		return <DialogItem key={`${data.id}${data.name}`} name={data.name} id={data.id} image={data.image} />
@@ -22,13 +14,10 @@ const Dialogs = (props) => {
 	let messagesElements =
 		props.messagesNames.map(data => <MessageItem key={`${data.id}${data.message}`} message={data.message} />);
 
-	let onAddMessage = () => {
-		props.addMessage();
+	let onSubmit = (values) => {
+		console.log(values);
 
-	}
-
-	let onMessageChange = (e) => {
-		props.onMessageChange(e.target.value);
+		props.addMessage(values.message);
 	}
 
 	return (
@@ -41,14 +30,18 @@ const Dialogs = (props) => {
 					{messagesElements}
 				</div>
 				<div className="dialogs-post">
-					<textarea onChange={onMessageChange} value={props.newMessageText} />
-					<button onClick={onAddMessage}>Отправить</button>
+
+					<DialogsForm onSubmit={onSubmit} />
+
 				</div>
 			</div>
 		</div>
 
 	);
 }
+
+
+
 
 export default Dialogs;
 
