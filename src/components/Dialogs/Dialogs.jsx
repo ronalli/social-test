@@ -8,12 +8,19 @@ const Dialogs = (props) => {
 
 
 
-	console.log(UsersAPI.getUserFollow(14935));
-	console.log(UsersAPI.setDialogs(14935));
-	console.log(UsersAPI.getDialogs());
-	console.log(UsersAPI.getMessageUser(14935));
-	console.log(UsersAPI.setMessagesUser(14935));
-	console.log(UsersAPI.getMessageUser(14935));
+	// console.log(UsersAPI.getUserFollow(14935));
+	// console.log(UsersAPI.setDialogs(14963));
+	// console.log(UsersAPI.getDialogs());
+	// console.log(UsersAPI.getMessageUser(14935));
+
+
+	// console.log(UsersAPI.getMessageUser(14963));
+
+	console.log(props.users);
+
+
+	//work method // console.log(UsersAPI.setMessagesUser(14963));
+	//work method // console.log(UsersAPI.getMessageUser(14963));
 
 	let dialogsElements = props.dialogsNames.map((data) => {
 		return <DialogItem key={`${data.id}${data.name}`} name={data.name} id={data.id} image={data.image} />
