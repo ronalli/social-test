@@ -1,24 +1,26 @@
 import { Form, Field } from 'react-final-form';
 
+// const required = (value) => (value ? undefined : 'Required')
+
+
+const required = (value) => (value ? undefined : 'Required')
+const emailStr = value => {
+	if (value && value.lastIndexOf('@gmail.com') !== -1) {
+		return undefined;
+	}
+	return 'Required';
+}
+
+
 const LoginForm = (props) => {
 
 	return (
 		<Form
 			onSubmit={props.onSubmit}
-			validate={values => {
-				const errors = {}
-				if (!values.email) {
-					errors.email = 'Required'
-				}
-				if (!values.password) {
-					errors.password = 'Required'
-				}
-				return errors
-			}}
 			render={({ handleSubmit }) => (
 				<form onSubmit={handleSubmit}>
 					<div>
-						<Field name='email'>
+						<Field name='email' validate={emailStr}>
 							{({ input, meta }) => (
 								<div>
 									<label>Email</label>
@@ -29,7 +31,7 @@ const LoginForm = (props) => {
 						</Field>
 					</div>
 					<div>
-						<Field name='password' >
+						<Field name='password' validate={required} >
 							{({ input, meta }) => (
 								<div>
 									<label>Password</label>
@@ -38,10 +40,6 @@ const LoginForm = (props) => {
 								</div>
 							)}
 						</Field>
-						{/* component='input'
-							type='text'
-							placeholder='Password'
-						/> */}
 					</div>
 					<div>
 						<Field
