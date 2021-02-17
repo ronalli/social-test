@@ -1,15 +1,16 @@
 import { Form, Field } from 'react-final-form';
+import { required, emailStr } from './../../utils/validators/validators';
 
 // const required = (value) => (value ? undefined : 'Required')
 
 
-const required = (value) => (value ? undefined : 'Required')
-const emailStr = value => {
-	if (value && value.lastIndexOf('@gmail.com') !== -1) {
-		return undefined;
-	}
-	return 'Required';
-}
+// const required = (value) => (value ? undefined : 'Required')
+// const emailStr = value => {
+// 	if (value && value.lastIndexOf('@gmail.com') !== -1) {
+// 		return undefined;
+// 	}
+// 	return 'invalid email format';
+// }
 
 
 const LoginForm = (props) => {

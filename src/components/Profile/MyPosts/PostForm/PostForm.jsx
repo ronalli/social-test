@@ -1,14 +1,15 @@
 import { Form, Field } from "react-final-form";
+import { composeValidators, required, maxValue } from './../../../../utils/validators/validators.jsx';
 
-const required = value => (value ? undefined : 'Required');
+// const required = value => (value ? undefined : 'Required');
 
-const maxValue = maxSymbol => value => {
-	return value.length <= maxSymbol ? undefined : 'Exceeded max lenght post';
-}
+// const maxValue = maxSymbol => value => {
+// 	return value.length <= maxSymbol ? undefined : 'Exceeded max length post';
+// }
 
-const composeValidators = (...validators) => value => {
-	return validators.reduce((error, validator) => error || validator(value), undefined)
-}
+// const composeValidators = (...validators) => value => {
+// 	return validators.reduce((error, validator) => error || validator(value), undefined)
+// }
 
 let PostForm = (props) => {
 
