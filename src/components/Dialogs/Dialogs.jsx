@@ -14,11 +14,10 @@ const Dialogs = (props) => {
 	let messagesElements =
 		props.messagesNames.map(data => <MessageItem key={`${data.id}${data.message}`} message={data.message} />);
 
-	let onSubmit = (values) => {
-		console.log(values);
-
-		props.addMessage(values.message);
-	}
+	// let onSubmit = (values) => {
+	// 	// console.log(values);
+	// 	props.addMessage(values.messageText);
+	// }
 
 	return (
 		<div className='dialogs'>
@@ -31,7 +30,7 @@ const Dialogs = (props) => {
 				</div>
 				<div className="dialogs-post">
 
-					<DialogsForm onSubmit={onSubmit} />
+					<DialogsForm addMessage={props.addMessage} />
 
 				</div>
 			</div>
