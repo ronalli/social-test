@@ -17,7 +17,7 @@ const MyPosts = (props) => {
 	return (
 		<div className='posts'>
 
-			<PostForm onSubmit={onSubmit} />
+			<PostForm onSubmit={onSubmit} addPost = {props.addPost}/>
 
 			<div className='posts-wrapper'>
 				{postElement}

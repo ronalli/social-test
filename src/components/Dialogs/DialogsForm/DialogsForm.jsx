@@ -1,11 +1,11 @@
 
-import { Form, Formik, Field } from "formik";
+import { Form, Formik, Field } from 'formik';
 import * as Yup from 'yup';
 
 const DisplayingErrorMessagesSchema = Yup.object().shape({
-	text: Yup.string()
+	message: Yup.string()
 		.min(2, 'Too Short!')
-		.max(50, 'Too Long!')
+		.max(20, 'Too Long!')
 		.required('Required'),
 });
 
@@ -14,22 +14,23 @@ let DialogsForm = (props) => {
 		<div>
 			<Formik
 				initialValues={{
-					text: '',
+					message: '',
 				}}
-				onSubmit={values => props.addMessage(values.text)}
+				onSubmit={values => {
+					props.addMessage(values.message)
+					document.querySelector('form').reset();
+				}}
 				validationSchema={DisplayingErrorMessagesSchema}
 			>
-
 				{({ errors, touched }) => (
 					<Form>
 						<div>
-							<Field name='text' placeholder='your message friend' />
-							{errors.text && touched.text && <div>{errors.text}</div>}
+							<Field name='message' placeholder='your message friend' />
+							{errors.message && touched.message && <div>{errors.message}</div>}
 						</div>
 						<div>
 							<button type='submit'>send</button>
 						</div>
-
 					</Form>
 				)
 				}
