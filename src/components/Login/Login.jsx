@@ -1,12 +1,12 @@
 import React from 'react';
-import LoginForm from './LoginForm';
+import LoginForm from './LoginForm/LoginForm';
 
 const Login = (props) => {
 
 	return (
 		<>
 			<h1>LOGIN</h1>
-			<LoginForm onSubmit={props.onSubmit} />
+			<LoginForm postAuth={props.postAuth} />
 		</>
 	);
 

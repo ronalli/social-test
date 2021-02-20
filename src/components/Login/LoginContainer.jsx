@@ -7,37 +7,37 @@ import Login from './Login';
 
 class LoginContainer extends React.Component {
 
-	constructor(props) {
-		super(props);
-		this.state = {
-			auth: this.props.dataAuth
-		}
-	}
+	// constructor(props) {
+	// 	super(props);
+	// 	this.state = {
+	// 		auth: this.props.dataAuth
+	// 	}
+	// }
 
-	onSubmit = (values) => {
-		this.setState({
-			auth: values,
-		})
-	}
+	// onSubmit = (values) => {
+	// 	this.setState({
+	// 		auth: values,
+	// 	})
+	// }
 
 
-	componentDidUpdate(prevProps, prevState) {
-		if (this.state.auth !== prevState.auth) {
-			this.props.postAuth(this.state.auth);
-		}
-	}
+	// componentDidUpdate(prevProps, prevState) {
+	// 	if (this.state.auth !== prevState.auth) {
+	// 		this.props.postAuth(this.state.auth);
+	// 	}
+	// }
 
 
 	render() {
 		return (
-			<Login onSubmit={this.onSubmit} />
+			<Login  {...this.props} postAuth={this.props.postAuth} />
 		)
 	}
 }
 
 let mapStateToProps = (state) => {
 	return {
-		dataAuth: state.auth.dataAuth
+		// dataAuth: state.auth.dataAuth
 	};
 
 };
