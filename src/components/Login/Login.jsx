@@ -9,7 +9,12 @@ const Login = (props) => {
 	return (
 		<>
 			<h1>LOGIN</h1>
-			<LoginForm postAuth={props.postAuth} />
+			<LoginForm {...props} />
+			{
+				!props.isAuth && props.errorAuth
+					? <div>{props.errorAuth}</div>
+					: ''
+			}
 		</>
 	);
 

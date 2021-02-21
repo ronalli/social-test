@@ -8,7 +8,7 @@ class LoginContainer extends React.Component {
 
 	render() {
 		return (
-			<Login  {...this.props} postAuth={this.props.postAuth} />
+			<Login  {...this.props} />
 		)
 	}
 }
@@ -16,6 +16,7 @@ class LoginContainer extends React.Component {
 let mapStateToProps = (state) => {
 	return {
 		isAuth: state.auth.isAuth,
+		errorAuth: state.auth.errorAuth
 	};
 
 };
