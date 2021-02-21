@@ -9,11 +9,8 @@ let initialState = {
 	email: null,
 	login: null,
 	isAuth: false,
-	dataAuth: {
-		email: null,
-		password: null,
-		rememberMe: null,
-	}
+	password: null,
+	rememberMe: null,
 };
 
 export const authReducer = (state = initialState, action) => {
@@ -22,14 +19,12 @@ export const authReducer = (state = initialState, action) => {
 			return {
 				...state,
 				...action.data,
-				isAuth: true,
 			}
 		}
 		case SET_AUTH: {
 			return {
 				...state,
-				dataAuth: { ...action.data },
-				isAuth: true
+				...action.data,
 			}
 		}
 		default:
@@ -40,7 +35,7 @@ export const authReducer = (state = initialState, action) => {
 
 
 export const setAuthUserData = (id, email, login) => ({ type: SET_USER_DATA, data: { id, email, login } });
-export const setAuth = (email, password, rememberMe) => ({ type: SET_AUTH, data: { email, password, rememberMe } });
+export const setAuth = (email, password, rememberMe, isAuth) => ({ type: SET_AUTH, data: { email, password, rememberMe, isAuth } });
 
 export const getAuthUserData = () => (dispatch) => {
 	AuthAPI.authMe().then(data => {
@@ -52,16 +47,20 @@ export const getAuthUserData = () => (dispatch) => {
 }
 
 export const postAuth = (data) => (dispatch) => {
-	AuthAPI.loginMe(data.email, data.password, data.rememberMe)
+	AuthAPI.loginMe(data.email, data.password, data.rememberMe = false)
 		.then(dataResponse => {
 			if (dataResponse.data.resultCode === 0) {
-				dispatch(setAuth(data.email, data.password, data.rememberMe))
-				AuthAPI.authMe().then(data => {
-					let { id, email, login } = data.data;
-					if (data.resultCode === 0) {
-						dispatch(setAuthUserData(id, email, login));
-					}
-				});
+				dispatch(setAuth(data.email, data.password, data.rememberMe, true))
+				dispatch(getAuthUserData())
+			}
+		})
+}
+
+export const logout = () => (dispatch) => {
+	AuthAPI.logoutMe()
+		.then(dataResponse => {
+			if (dataResponse.data.resultCode === 0) {
+				dispatch(setAuth(null, null, null, false))
 			}
 		})
 }
