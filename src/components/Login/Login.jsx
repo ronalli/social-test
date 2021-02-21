@@ -1,12 +1,20 @@
 import React from 'react';
-import LoginForm from './LoginForm';
+import { Redirect } from 'react-router-dom';
+import LoginForm from './LoginForm/LoginForm';
 
 const Login = (props) => {
+
+	if (props.isAuth) return <Redirect to={'/profile'} />
 
 	return (
 		<>
 			<h1>LOGIN</h1>
-			<LoginForm onSubmit={props.onSubmit} />
+			<LoginForm {...props} />
+			{
+				!props.isAuth && props.errorAuth
+					? <div>{props.errorAuth}</div>
+					: ''
+			}
 		</>
 	);
 
