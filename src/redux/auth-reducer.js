@@ -10,7 +10,6 @@ let initialState = {
 	email: null,
 	login: null,
 	isAuth: false,
-	password: null,
 	rememberMe: null,
 	errorAuth: '',
 };
@@ -42,15 +41,16 @@ export const authReducer = (state = initialState, action) => {
 
 
 
-export const setAuthUserData = (id, email, login) => ({ type: SET_USER_DATA, data: { id, email, login } });
-export const setAuth = (email, password, rememberMe, isAuth) => ({ type: SET_AUTH, data: { email, password, rememberMe, isAuth } });
+export const setAuthUserData = (id, email, login, isAuth) => ({ type: SET_USER_DATA, data: { id, email, login, isAuth } });
+export const setAuth = (email, rememberMe, id, isAuth) => ({ type: SET_AUTH, data: { email, rememberMe, id, isAuth } });
 export const errorAuth = (message) => ({ type: ERROR_AUTH, message });
 
 export const getAuthUserData = () => (dispatch) => {
 	AuthAPI.authMe().then(data => {
 		let { id, email, login } = data.data;
+		// console.log(data.data);
 		if (data.resultCode === 0) {
-			dispatch(setAuthUserData(id, email, login));
+			dispatch(setAuthUserData(id, email, login, true));
 		}
 	});
 }
@@ -58,12 +58,11 @@ export const getAuthUserData = () => (dispatch) => {
 export const postAuth = (payload) => (dispatch) => {
 	AuthAPI.loginMe(payload.email, payload.password, payload.rememberMe = false)
 		.then(dataResponse => {
-			if (dataResponse.data.resultCode === 1) {
-				dispatch(errorAuth('Inccorrect password or email'))
-			}
 			if (dataResponse.data.resultCode === 0) {
-				dispatch(setAuth(payload.email, payload.password, payload.rememberMe, true))
+				dispatch(setAuth(payload.email, payload.rememberMe, dataResponse.data.data.userId, true))
 				dispatch(getAuthUserData())
+			} else {
+				dispatch(errorAuth('Inccorrect password or email'))
 			}
 		})
 }

@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import News from './components/News/News';
@@ -10,33 +10,43 @@ import NavbarContainer from './components/Navbar/NavbarContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
-// import Login from './components/Login/Login';
 import LoginContainer from './components/Login/LoginContainer';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { getAuthUserData } from './redux/auth-reducer';
 
 
-const App = (props) => {
-	return (
-		<div className="app-wrapper">
-			<HeaderContainer />
-			<NavbarContainer
-			/>
+class App extends React.Component {
+	componentDidMount() {
+		this.props.getAuthUserData()
+	}
 
-			<div className='app-wrapper-content'>
+	render() {
+		return (
+			<div className="app-wrapper">
+				<HeaderContainer />
+				<NavbarContainer
+				/>
 
-				<Route path='/dialogs' render={() => <DialogsContainer />} />
-				<Route path='/profile/:userId?' render={() => <ProfileContainer />} />
-				<Route path='/users' render={() => <UsersContainer />} />
-				<Route path='/news' component={News} />
-				<Route path='/music' component={Music} />
-				<Route path='/settings' component={Settings} />
+				<div className='app-wrapper-content'>
 
-				<Route path='/login' component={LoginContainer} />
+					<Route path='/dialogs' render={() => <DialogsContainer />} />
+					<Route path='/profile/:userId?' render={() => <ProfileContainer />} />
+					<Route path='/users' render={() => <UsersContainer />} />
+					<Route path='/news' component={News} />
+					<Route path='/music' component={Music} />
+					<Route path='/settings' component={Settings} />
 
+					<Route path='/login' component={LoginContainer} />
+
+
+				</div>
 
 			</div>
-
-		</div>
-	);
+		);
+	}
 }
 
-export default App;
+export default compose(
+	withRouter,
+	connect(null, { getAuthUserData }))(App);
