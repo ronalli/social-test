@@ -9,7 +9,3 @@ export const getProfileUserIdSelector = (state) => {
 export const getStatusSelector = (state) => {
 	return state.profilePage.status;
 }
-
-export const getIdSelector = (state) => {
-	return state.profilePage.id;
-}

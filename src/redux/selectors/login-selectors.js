@@ -9,3 +9,7 @@ export const getIsAuthSelector = (state) => {
 export const getLoginSelector = (state) => {
 	return state.auth.login;
 }
+
+export const getAuthIdSelector = (state) => {
+	return state.auth.id;
+}
