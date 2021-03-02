@@ -13,3 +13,7 @@ export const getLoginSelector = (state) => {
 export const getAuthIdSelector = (state) => {
 	return state.auth.id;
 }
+
+export const getCaptchaUrl = (state) => {
+	return state.auth.captchaUrl;
+}
