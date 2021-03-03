@@ -11,8 +11,8 @@ let initialState = {
 	login: null,
 	isAuth: false,
 	rememberMe: null,
-	errorAuth: '',
-	captchaUrl: '',
+	errorAuth: null,
+	captchaUrl: null,
 };
 
 export const authReducer = (state = initialState, action) => {
@@ -49,31 +49,28 @@ export const authReducer = (state = initialState, action) => {
 
 
 export const setAuthUserData = (id, email, login, isAuth) => ({ type: SET_USER_DATA, data: { id, email, login, isAuth } });
-export const setAuth = (email, rememberMe, id, isAuth) => ({ type: SET_AUTH, data: { email, rememberMe, id, isAuth } });
+export const setAuth = (email, rememberMe, id, isAuth, captchaUrl, errorAuth) => ({ type: SET_AUTH, data: { email, rememberMe, id, isAuth, captchaUrl, errorAuth } });
 export const errorAuth = (message) => ({ type: ERROR_AUTH, message });
 export const setCaptcha = (captchaUrl) => ({ type: SET_CAPTCHA, captchaUrl })
 
 export const getAuthUserData = () => (dispatch) => {
 	AuthAPI.authMe().then(data => {
 		let { id, email, login } = data.data;
-		// console.log(data.data);
 		if (data.resultCode === 0) {
 			dispatch(setAuthUserData(id, email, login, true));
 		}
 	});
 }
 
-export const postAuth = (payload) => async (dispatch) => {
-	AuthAPI.loginMe(payload.email, payload.password, payload.rememberMe = false)
+export const postAuth = (payload) => (dispatch) => {
+	AuthAPI.loginMe(payload.email, payload.password, payload.rememberMe = false, payload.captcha)
 		.then(dataResponse => {
 			if (dataResponse.data.resultCode === 0) {
 				dispatch(setAuth(payload.email, payload.rememberMe, dataResponse.data.data.userId, true))
 				dispatch(getAuthUserData())
 			} else if (dataResponse.data.resultCode === 10) {
-				console.log('dsds');
 				dispatch(getCaptchaUrl());
 			} else {
-				console.log(dataResponse.data);
 				dispatch(errorAuth('Inccorrect password or email'))
 			}
 		})
@@ -83,7 +80,7 @@ export const logout = () => (dispatch) => {
 	AuthAPI.logoutMe()
 		.then(dataResponse => {
 			if (dataResponse.data.resultCode === 0) {
-				dispatch(setAuth(null, null, null, false))
+				dispatch(setAuth(null, null, null, false, null, null))
 			}
 		})
 }
