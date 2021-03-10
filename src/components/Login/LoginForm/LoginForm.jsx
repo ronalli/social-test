@@ -17,7 +17,8 @@ const LoginForm = (props) => {
 				initialValues={{
 					email: '',
 					password: '',
-					rememberMe: ''
+					rememberMe: '',
+					captcha: ''
 				}}
 				onSubmit={values => {
 					props.postAuth(values)
@@ -38,6 +39,15 @@ const LoginForm = (props) => {
 						<div>
 							<Field name='rememberMe' type='checkbox' />
 						</div>
+						{
+							props.captchaUrl ?
+								<div>
+									<img src={props.captchaUrl} alt="alt" />
+									<Field name='captcha' type='text' placeholder='captcha' />
+								</div>
+								: ''
+						}
+
 						<div>
 							<button type='submit'>login</button>
 						</div>

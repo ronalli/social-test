@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { getStatus, getUserProfile, updateStatus } from '../../redux/profile-reducer';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
+import { getProfileSelector, getProfileUserIdSelector, getStatusSelector } from '../../redux/selectors/profile-selectors';
+import { getAuthIdSelector } from '../../redux/selectors/login-selectors';
 
 class ProfileContainer extends React.Component {
 
@@ -33,10 +35,10 @@ class ProfileContainer extends React.Component {
 
 let mapStateToProps = (state) => {
 	return {
-		profile: state.profilePage.profile,
-		profileUserId: state.profilePage.profileUserId,
-		status: state.profilePage.status,
-		authorizedUserId: state.auth.id,
+		profile: getProfileSelector(state),
+		profileUserId: getProfileUserIdSelector(state),
+		status: getStatusSelector(state),
+		authorizedUserId: getAuthIdSelector(state),
 	};
 
 };
@@ -48,10 +50,3 @@ export default compose(
 	withRouter,
 	// withAuthRedirect
 )(ProfileContainer);
-
-// let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
-
-// let WithUrlDataContainerComponent = withRouter(AuthRedirectComponent);
-
-
-// export default connect(mapStateToProps, { getUserProfile })(WithUrlDataContainerComponent);

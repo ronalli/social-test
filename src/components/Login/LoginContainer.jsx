@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { postAuth } from '../../redux/auth-reducer';
+import { getCaptchaUrl, getErrorAuthSelector, getIsAuthSelector } from '../../redux/selectors/login-selectors';
 import Login from './Login';
 
 
@@ -15,8 +16,9 @@ class LoginContainer extends React.Component {
 
 let mapStateToProps = (state) => {
 	return {
-		isAuth: state.auth.isAuth,
-		errorAuth: state.auth.errorAuth
+		isAuth: getIsAuthSelector(state),
+		errorAuth: getErrorAuthSelector(state),
+		captchaUrl: getCaptchaUrl(state)
 	};
 
 };

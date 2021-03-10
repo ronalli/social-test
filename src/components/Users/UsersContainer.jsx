@@ -5,6 +5,7 @@ import Users from './Users';
 import Prealoder from '../common/Preloader/Prealoder';
 import { compose } from 'redux';
 import { getCountPageSelector, getCurrentPageSelector, getTotalUsersCountSelector, getUsersSelector, getIsFetchingSelector, getFollowingInProgressSelector } from '../../redux/selectors/user-selectors';
+
 class UsersContainer extends React.Component {
 
 	componentDidMount() {
