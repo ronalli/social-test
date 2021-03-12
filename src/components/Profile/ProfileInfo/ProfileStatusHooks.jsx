@@ -24,13 +24,21 @@ const ProfileStatusHooks = (props) => {
 	const onChangeStatus = (e) => {
 		setStatus(e.target.value)
 	}
+
+	const onKeyStatus = (e) => {
+		if (e.keyCode === 13) {
+			setEditMode(false);
+			props.updateStatus(status)
+		}
+	}
+
 	return (
 		<div className='profile-status'>
 
 			{editMode
 				?
 				<div>
-					<input autoFocus onBlur={deactivateEditMode} value={status} onChange={onChangeStatus} onFocus={hangleFocus} />
+					<input autoFocus onBlur={deactivateEditMode} value={status} onChange={onChangeStatus} onFocus={hangleFocus} onKeyDown={onKeyStatus} />
 				</div>
 				:
 				<div>
