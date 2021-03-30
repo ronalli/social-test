@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import './ProfileInfo';
+
 
 const ProfileStatusHooks = (props) => {
 
-	let [editMode, setEditMode] = useState(false);
-	let [status, setStatus] = useState(props.status);
+	const [editMode, setEditMode] = useState(false);
+	const [status, setStatus] = useState(props.status);
 
 	useEffect(() => {
 		setStatus(props.status)
 	}, [props.status])
 
 	const activateEditMode = () => {
-		setEditMode(true)
+		setEditMode(true);
 	}
-
-	const hangleFocus = (event) => { event.target.select() }
 
 	const deactivateEditMode = () => {
 		setEditMode(false);
@@ -22,23 +20,26 @@ const ProfileStatusHooks = (props) => {
 	}
 
 	const onChangeStatus = (e) => {
-		setStatus(e.target.value)
+		setStatus(e.target.value);
+	}
+
+	const handleFocus = (e) => {
+		e.target.select();
 	}
 
 	const onKeyStatus = (e) => {
 		if (e.keyCode === 13) {
 			setEditMode(false);
-			props.updateStatus(status)
+			props.updateStatus(status);
 		}
 	}
 
 	return (
 		<div className='profile-status'>
-
 			{editMode
 				?
 				<div>
-					<input autoFocus onBlur={deactivateEditMode} value={status} onChange={onChangeStatus} onFocus={hangleFocus} onKeyDown={onKeyStatus} />
+					<input value={status} autoFocus onBlur={deactivateEditMode} onChange={onChangeStatus} onFocus={handleFocus} onKeyDown={onKeyStatus} />
 				</div>
 				:
 				<div>
@@ -46,8 +47,7 @@ const ProfileStatusHooks = (props) => {
 				</div>
 			}
 		</div>
-	);
-
+	)
 }
 
 export default ProfileStatusHooks;

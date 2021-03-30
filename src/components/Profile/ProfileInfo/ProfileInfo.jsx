@@ -1,7 +1,6 @@
 import Prealoder from '../../common/Preloader/Prealoder';
 import './ProfileInfo.css';
 import userPhoto from '../../../Assets/images/user.png';
-// import ProfileStatus from './ProfileStatus';
 import ProfileStatusHooks from './ProfileStatusHooks';
 
 const ProfileInfo = (props) => {

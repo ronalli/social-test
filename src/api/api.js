@@ -1,9 +1,12 @@
 import * as axios from 'axios';
 
+require('dotenv').config();
+
+
 const instance = axios.create({
 	baseURL: 'https://social-network.samuraijs.com/api/1.0/',
 	headers: {
-		'API-KEY': 'b7bf1072-5b8f-4d6c-8a1e-7fddd7eae7b1',
+		'API-KEY': process.env.API_KEY,
 	},
 	withCredentials: true
 });

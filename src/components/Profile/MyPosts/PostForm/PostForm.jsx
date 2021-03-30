@@ -18,7 +18,6 @@ let PostForm = (props) => {
 				}}
 				onSubmit={values => {
 					props.addPost(values.postMessage);
-					// console.log(document.querySelector('form'));
 					document.querySelector('form').reset();
 				}}
 				validationSchema={DisplayingErrorMessagesSchema}
